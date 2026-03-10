@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Just Reacher — Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<rect width='64' height='64' rx='12' fill='%230f766e'/>
+<text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle'
+font-family='Arial, Helvetica, sans-serif' font-size='32' fill='white' font-weight='bold'>
+R
+</text>
+</svg>">
+<style>
+  :root {
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --teal-pale: #ccfbf1;
+    --teal-dark: #0f766e;
+    --bg: #f8fafb;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  /* ── Background subtle grid pattern */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(13,148,136,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13,148,136,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Radial glow orbs */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -180px; right: -180px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(20,184,166,.13) 0%, transparent 68%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb-bl {
+    position: fixed;
+    bottom: -140px; left: -140px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(13,148,136,.09) 0%, transparent 68%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Page wrapper */
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 2rem;
+    animation: pageFade 1s ease both;
+  }
+
+  @keyframes pageFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ── Card container */
+  .card {
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(13,148,136,.15);
+    border-radius: 24px;
+    padding: clamp(2.5rem, 6vw, 4rem) clamp(2rem, 7vw, 5rem);
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow:
+      0 4px 24px rgba(13,148,136,.08),
+      0 1px 0 rgba(255,255,255,.9) inset;
+    animation: cardRise .9s .2s cubic-bezier(.22,1,.36,1) both;
+  }
+
+  @keyframes cardRise {
+    from { opacity: 0; transform: translateY(32px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── Monogram badge */
+  .monogram {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 60px; height: 60px;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 8px 20px rgba(13,148,136,.3);
+    animation: badgePop .6s .5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+
+  @keyframes badgePop {
+    from { opacity: 0; transform: scale(.6); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Label */
+  .label {
+    display: inline-block;
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    animation: fadeIn .6s .7s ease both;
+  }
+
+  /* ── Typing text */
+  .typing-wrap {
+    min-height: 4.5rem;
+    margin-bottom: 1.8rem;
+    animation: fadeIn .6s .8s ease both;
+  }
+
+  .typing-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--text);
+    letter-spacing: -.01em;
+  }
+
+  /* Teal highlight words */
+  .typing-text .hi { color: var(--teal); }
+
+  /* Blinking cursor */
+  .cursor {
+    display: inline-block;
+    width: 2px; height: 1.1em;
+    background: var(--teal);
+    border-radius: 2px;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink .75s step-end infinite;
+  }
+  .cursor.done { animation: none; opacity: 0; }
+
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+
+  /* ── Divider */
+  .divider {
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 2px;
+    margin: 0 auto 1.8rem;
+    animation: fadeIn .6s 1s ease both;
+  }
+
+  /* ── Wait message */
+  .wait-msg {
+    font-size: .88rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: .01em;
+    opacity: 0;
+    transition: opacity .6s ease;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .wait-msg.visible { opacity: 1; }
+  .wait-msg em {
+    font-style: normal;
+    color: var(--teal-dark);
+    font-weight: 500;
+  }
+
+  /* ── Progress bar */
+  .progress-wrap {
+    background: var(--border);
+    border-radius: 99px;
+    height: 4px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .progress-wrap.visible { opacity: 1; }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 99px;
+    transition: width linear;
+  }
+
+  /* ── Footer note */
+  .footer-note {
+    margin-top: 2rem;
+    font-size: .75rem;
+    color: var(--text-muted);
+    opacity: .6;
+    animation: fadeIn .8s 1.2s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── Page exit fade */
+  body.exit {
+    animation: exitFade .7s ease forwards;
+  }
+  @keyframes exitFade {
+    to { opacity: 0; transform: scale(.98); }
+  }
+
+  /* ── Mobile */
+  @media (max-width: 480px) {
+    .card { border-radius: 18px; }
+    .typing-text { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb-bl"></div>
+
+<div class="page">
+  <div class="card">
+
+    <div class="monogram">JR</div>
+
+    <div class="label">Portfolio · 2026</div>
+
+    <div class="typing-wrap">
+      <p class="typing-text" id="typingText"><span class="cursor" id="cursor"></span></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="wait-msg" id="waitMsg">
+      Please wait while we take you to the <em>portfolio…</em>
+    </p>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+  </div>
+
+  <p class="footer-note">just-reacher.dev · IT Developer</p>
+</div>
+
+<script>
+  const fullText = "Welcome to our digital portfolio. Innovation, creativity, and technology in action.";
+
+  // Words to highlight in teal
+  const highlights = ["Innovation,", "creativity,", "technology"];
+
+  const typingEl = document.getElementById('typingText');
+  const cursor   = document.getElementById('cursor');
+  const waitMsg  = document.getElementById('waitMsg');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressBar  = document.getElementById('progressBar');
+
+  let charIndex = 0;
+  const TYPING_SPEED = 42; // ms per character
+  const REDIRECT_DELAY = 5000; // ms after typing finishes
+
+  function buildHighlightedHTML(text) {
+    // Wrap highlight words in <span class="hi">
+    let result = text;
+    highlights.forEach(word => {
+      result = result.replace(
+        new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        `<span class="hi">${word}</span>`
+      );
+    });
+    return result;
+  }
+
+  function type() {
+    if (charIndex <= fullText.length) {
+      const currentSlice = fullText.slice(0, charIndex);
+      const highlighted  = buildHighlightedHTML(currentSlice);
+      // Re-inject cursor at end
+      typingEl.innerHTML = highlighted + '<span class="cursor" id="cursor"></span>';
+      charIndex++;
+      setTimeout(type, TYPING_SPEED);
+    } else {
+      // Typing done — hide cursor
+      const cur = document.getElementById('cursor');
+      if (cur) cur.classList.add('done');
+
+      // Show wait message
+      waitMsg.classList.add('visible');
+
+      // Show & animate progress bar
+      progressWrap.classList.add('visible');
+      // Small delay so transition is visible
+      setTimeout(() => {
+        progressBar.style.transitionDuration = REDIRECT_DELAY + 'ms';
+        progressBar.style.width = '100%';
+      }, 60);
+
+      // Redirect after delay
+      setTimeout(() => {
+        document.body.classList.add('exit');
+        setTimeout(() => {
+          window.location.href = 'portfolio.html';
+        }, 680); // matches exit animation duration
+      }, REDIRECT_DELAY);
+    }
+  }
+
+  // Start typing after card animation settles
+  setTimeout(type, 1100);
+</script>
+</body>
+</html>
